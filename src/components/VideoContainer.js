@@ -19,7 +19,7 @@ const VideoContainer = () => {
   return (
     <div className="flex gap-[2%] p-3 flex-wrap">
       {videos.map((video, index) => (
-        <Link to ={"/watch?v=" + video.id}> <VideoCard key={index} info={video} /></Link>
+        <Link key={index} to={"/watch?v=" + video.id}> <VideoCard info={video} /></Link>
 
       ))}
       {/* {videos[0] && <VideoCard info={videos[0]} />} */}
