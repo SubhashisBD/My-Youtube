@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
 const Head = () => {
+    const [searchQuery, setSearchQuery] = useState("")
+
+    useEffect( () => {
+        const search = fetch("http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=Bhubaneswar")
+    })
 
     const dispatch = useDispatch();
 
@@ -17,7 +22,13 @@ const Head = () => {
                 <img className="h-12 -mt-2 px-3" alt="youtube" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM2QZ6DKxCknHMUkOUx5nctv2YJu-8sPT__g&s" />
             </div>
             <div className="col-span-10 text-center -ml-10 px-10">
-                <input type="text" className="w-1/2 border border-slate-900 rounded-lg px-4 py-1" />
+                <input
+                    type="text"
+                    className="w-1/2 border border-slate-900 rounded-lg px-4 py-1"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                {console.log(searchQuery)}
                 <button className="px-4 py-1 bg-gray-200 rounded-xl border border-slate-900 ml-5">
                     Search
                 </button>
